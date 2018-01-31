@@ -9,5 +9,56 @@
         </view>
       </scroll-view>
     </view>
+    <!--商品列表  -->
+    <view class='productList'>
+      <view class='product-filter'>
+        <!-- 全部分类和综合排序按钮 -->
+        <view class='filter-titles'>
+          <view>
+            <text class='filter-title'>全部分类</text>
+            <text class='filter-arrows' decode>&nbsp;</text>
+          </view>
+          <view class='active'>
+            <text class='filter-title'>综合排序</text>
+            <text class='filter-arrows' decode>&nbsp;</text>
+          </view>
+        </view>
+        <!-- 显示隐藏的全部分类 -->
+        <!-- <view class='filter-items'>
+          <view>
+            <view>全部分类</view>
+          </view>
+        </view> -->
+        <!-- 显示隐藏的综合排序 -->
+        <!-- <view class='filter-items'>
+          <view>
+            <view>综合排序</view>
+          </view>
+        </view> -->
+      </view>
+      <view class='productList-wrap'>
+        <navigator>
+          <view class='dl'>
+            <view class='dt'>
+              <image src='http://dummyimage.com/80x80/def279&text=孔超'></image>
+            </view>
+            <view class='dd nowrap product-item-title'>
+              商品的名称
+            </view>
+            <view class='product-specifics-wrap'>
+              <view class='product-specifics'>
+                <text class='product-span'>12ml</text>
+                <text class='product-var'>￥32</text>
+              </view>
+              <view class='dd product-operates'>
+                <text class='inner'>-</text>
+                <text class='product-operates-item'>3</text>
+                <text class='inner'>+</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
   </view>
 </view>
