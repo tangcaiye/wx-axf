@@ -45,7 +45,7 @@ var data = new Mock.mock({
       'products': []
     }
   ],
-  'products|200-400': [
+  'products|500-700': [
     {
       // 商品id
       'id|+1': 1,

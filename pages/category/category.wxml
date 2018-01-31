@@ -26,33 +26,35 @@
         <!-- 显示隐藏的全部分类 -->
         <view class='filter-items' hidden='{{!allCategories}}'>
           <view>
-            <view>全部分类</view>
+            <view class='{{activeCid === "全部分类" ? "active": ""}}' data-cidname="全部分类" data-index="all" bindtap='changeCid'>全部分类</view>
+            <view wx:for="{{computedCategories[activeCategory].cids}}" wx:key="{{item.cid_id}}" data-cidname="{{item.name}}" data-index="{{index}}" class='{{activeCid === item.name ? "active": ""}}' bindtap='changeCid'>{{item.name}}</view>
           </view>
-        </view> 
+        </view>
         <!-- 显示隐藏的综合排序 -->
         <view class='filter-items' hidden='{{!ranking}}'>
           <view>
             <view>综合排序</view>
+            
           </view>
         </view>
       </view>
       <view class='productList-wrap'>
-        <navigator>
+        <navigator wx:for="{{activeCategoryProducts}}" wx:key="{{item.id}}" src="/packageA/pages/product-item/product-item?id={{item.id}}">
           <view class='dl'>
             <view class='dt'>
-              <image src='http://dummyimage.com/80x80/def279&text=孔超'></image>
+              <image src='{{item.imgs.min}}'></image>
             </view>
             <view class='dd nowrap product-item-title'>
-              商品的名称
+              {{item.name}}
             </view>
             <view class='product-specifics-wrap'>
               <view class='product-specifics'>
-                <text class='product-span'>12ml</text>
-                <text class='product-var'>￥32</text>
+                <text class='product-span'>{{item.unit}}ml</text>
+                <text class='product-var'>￥{{item.price}}</text>
               </view>
               <view class='dd product-operates'>
                 <text class='inner'>-</text>
-                <text class='product-operates-item'>3</text>
+                <text class='product-operates-item'>{{item.num}}</text>
                 <text class='inner'>+</text>
               </view>
             </view>

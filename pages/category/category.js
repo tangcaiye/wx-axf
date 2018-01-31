@@ -1,8 +1,7 @@
+// pages/category/category.js
 let app = getApp()
 
-// pages/category/category.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -22,7 +21,9 @@ Page({
     // 激活的排序方式
     activeRanking: '综合排序',
     // 控制排序方式列表的显示隐藏
-    ranking: false
+    ranking: false,
+    // 激活的分类数据
+    activeCategoryProducts: []
   },
 
   /**
@@ -33,6 +34,7 @@ Page({
     this.setData({
       computedCategories: computedCategories
     })
+    this.changeActiveCategoryProducts()
   },
   /* 
    * 切换分类的下标
@@ -41,8 +43,11 @@ Page({
     // 获取点击分类项的下标
     let index = event.currentTarget.dataset.index
     this.setData({
-      activeCategory: index
+      activeCategory: index,
+      activeCid: '全部分类',
+      activeRanking: '综合排序'
     })
+    this.changeActiveCategoryProducts()
   },
   /* 
    * 显示隐藏全部分类
@@ -72,6 +77,50 @@ Page({
     this.setData({
       ranking: false,
       allCategories: false
+    })
+  },
+  /* 
+   * 更改激活的子分类
+   * @param string cidname   子分类的名称
+   * @param int    index  子分类的下标
+   */
+  changeCid (event) {
+    let cidname = event.currentTarget.dataset.cidname
+    let index = event.currentTarget.dataset.index
+    
+    this.setData({
+      activeCid: cidname,
+      activeCidIndex: index
+    })
+    this.changeActiveCategoryProducts()
+  },
+  /* 
+   * 更改激活的分类数据
+   */
+  changeActiveCategoryProducts () {
+    // 激活的分类下标
+    let activeCategory = this.data.activeCategory
+    // 所有的商品数据
+    let computedCategories = this.data.computedCategories
+    // 根据激活的分类下标返回激活分类对应商品数据
+    let activeCategoryProducts = computedCategories[activeCategory].products
+    // 根据全部分类的值进行过滤(值为all不过滤)
+    // 激活的子分类下标
+    let activeCidIndex = this.data.activeCidIndex
+    if (activeCidIndex !== 'all') {
+      activeCategoryProducts = activeCategoryProducts.filter(item => item.cidsIndex === Number(activeCidIndex))
+    }
+    
+    // 根据激活的排序方式进行排序
+    let activeRanking = this.data.activeRanking
+    if (activeRanking === '价格最低') {
+      activeCategoryProducts = activeCategoryProducts.sort((a, b) => a.price - b.price)
+    } else if (activeRanking === '价格最高') {
+      activeCategoryProducts = activeCategoryProducts.sort((a, b) => b.price - a.price)
+    }
+    
+    this.setData({
+      activeCategoryProducts: activeCategoryProducts
     })
   }
 })
