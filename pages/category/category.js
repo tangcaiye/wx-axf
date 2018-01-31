@@ -1,3 +1,5 @@
+let app = getApp()
+
 // pages/category/category.js
 Page({
 
@@ -5,14 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    computedCategories: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let computedCategories = app.globalData.computedCategories
+    this.setData({
+      computedCategories: computedCategories
+    })
   },
 
   /**

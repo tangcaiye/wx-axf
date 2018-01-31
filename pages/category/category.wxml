@@ -1,2 +1,13 @@
-<!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class="home">
+  <header-yellow></header-yellow>
+  <view class='main'>
+    <!--分类列表  -->
+    <view class='category'>
+      <scroll-view scroll-y class='categories'>
+        <view wx:for="{{computedCategories}}" wx:key="{{item.id}}">
+          <text>{{item.name}}</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
