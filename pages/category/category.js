@@ -45,7 +45,9 @@ Page({
     this.setData({
       activeCategory: index,
       activeCid: '全部分类',
-      activeRanking: '综合排序'
+      activeRanking: '综合排序',
+      ranking: false,
+      allCategories: false
     })
     this.changeActiveCategoryProducts()
   },
@@ -91,6 +93,18 @@ Page({
     this.setData({
       activeCid: cidname,
       activeCidIndex: index
+    })
+    this.changeActiveCategoryProducts()
+  },
+  /* 
+   * 更改排序方式
+   * @param string item   排序的方式
+   */
+  changeActiveRanking (event) {
+    let item = event.currentTarget.dataset.item
+
+    this.setData({
+      activeRanking: item
     })
     this.changeActiveCategoryProducts()
   },

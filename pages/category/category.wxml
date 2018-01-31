@@ -33,8 +33,7 @@
         <!-- 显示隐藏的综合排序 -->
         <view class='filter-items' hidden='{{!ranking}}'>
           <view>
-            <view>综合排序</view>
-            
+            <view wx:for="{{rankingList}}" wx:key="{{item}}" class='{{activeRanking===item? "active": "" }}' data-item="{{item}}" bindtap='changeActiveRanking'>{{item}}</view>
           </view>
         </view>
       </view>
