@@ -4,37 +4,37 @@
     <!--分类列表  -->
     <view class='category'>
       <scroll-view scroll-y class='categories'>
-        <view wx:for="{{computedCategories}}" wx:key="{{item.id}}">
-          <text>{{item.name}}</text>
+        <view wx:for="{{computedCategories}}" data-index="{{index}}" wx:key="{{item.id}}" bindtap='changeCategories'>
+          <text class='{{activeCategory===index?"active":""}}'>{{item.name}}</text>
         </view>
       </scroll-view>
     </view>
     <!--商品列表  -->
-    <view class='productList'>
-      <view class='product-filter'>
+    <view class='productList' bindtap='hideProductList'>
+      <view class='{{allCategories||ranking?"product-filter active": "product-filter"}}'>
         <!-- 全部分类和综合排序按钮 -->
         <view class='filter-titles'>
-          <view>
+          <view catchtap='changeAllCategories' class='{{allCategories?"active":""}}'>
             <text class='filter-title'>全部分类</text>
             <text class='filter-arrows' decode>&nbsp;</text>
           </view>
-          <view class='active'>
+          <view catchtap='changeRanking' class='{{ranking?"active":""}}'>
             <text class='filter-title'>综合排序</text>
             <text class='filter-arrows' decode>&nbsp;</text>
           </view>
         </view>
         <!-- 显示隐藏的全部分类 -->
-        <!-- <view class='filter-items'>
+        <view class='filter-items' hidden='{{!allCategories}}'>
           <view>
             <view>全部分类</view>
           </view>
-        </view> -->
+        </view> 
         <!-- 显示隐藏的综合排序 -->
-        <!-- <view class='filter-items'>
+        <view class='filter-items' hidden='{{!ranking}}'>
           <view>
             <view>综合排序</view>
           </view>
-        </view> -->
+        </view>
       </view>
       <view class='productList-wrap'>
         <navigator>
