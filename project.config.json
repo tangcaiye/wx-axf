@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
 	"appid": "wxc36d44d5f88f9988",
-	"projectname": "axf2",
+	"projectname": "wx-axf",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
