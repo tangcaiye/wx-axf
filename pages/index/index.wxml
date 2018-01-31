@@ -1,0 +1,38 @@
+<view class='home'>
+  <header-yellow></header-yellow>
+  <view class='main'>
+    <!-- bannar轮播图 -->
+    <view class='bannar'>
+      <swiper indicator-dots autoplay interval="4000" circular>
+        <swiper-item wx:for="{{bannar}}" wx:key="{{item.id}}">
+          <image src="{{item.bannar_img}}"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <!-- 首页商品列表 -->
+    <view class="acts-category" >
+      <view class='acts-category-item' wx:for="{{computedCategories}}" wx:key="{{item.id}}">
+        <!-- 列表的标题 -->
+        <view class="acts-category-title">
+          <text style='color: {{item.color}}; border-color: {{item.color}}'>{{item.name}}</text>
+          <navigator open-type='switchTab' url="/pages/category/category">更多 <text decode>&gt;</text></navigator>
+        </view>
+        <image class='category-item-banner' src="{{item.category_img}}"></image>
+        <view class='acts-category-item-goodsList'>
+          <navigator wx:for="{{item.products}}" wx:for-item="product" wx:for-index="ind" wx:key="{{product.id}}" wx:if="{{ind < 3}}" url='/packageA/pages/product-item/product-item?id={{product.id}}'>
+            <image src="{{product.imgs.min}}"></image>
+            <view class="category-name">{{product.name}}</view>
+            <view class="product-specifics">
+              <view class="product-specifics-left">
+                <view>{{product.unit}}ml</view>
+                <view>￥{{product.price}}</view>
+              </view>
+              <view class="product-specifics-right">+</view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,6 @@
+<view class='header'>
+  <view class="header-content">
+    <text>人民公园 12</text>
+  </view>
+  <text class='search'>搜索</text>
+</view>

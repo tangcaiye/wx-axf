@@ -1,0 +1,138 @@
+page{
+  height: 100%;
+}
+.main{
+  position: absolute;
+  top: 90rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #efefef;
+}
+.spline-top{
+  border-top: 1px solid #e0e0e0;
+}
+.spline-bottom{
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.theme-bg{
+  background-color: #ffd600;
+}
+.theme-font{
+  color: #f40;
+}
+.theme-font-gray{
+  color: #999;
+}
+.item{
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  -o-flex: 1;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-box-align: center;
+  box-align: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-box-pack: center;
+  box-pack: center;
+  justify-content: center;
+}
+/*原来angular版axf的css*/
+.redfont{
+  color: #f40;
+}
+.yellowbg{
+  background-color: #ffd600;
+}
+.pl14{
+  padding-left: 28rpx;
+}
+.more{
+  background: url("images/base/cart-more.png") right center no-repeat;
+  -webkit-background-size: auto 20rpx;
+  background-size: auto 20rpx;
+  padding-right: 50rpx;
+}
+.padding{
+  padding-left: 30rpx;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+}
+.fr{
+  float: right;
+}
+.block{
+  margin: 20rpx 0;
+  background-color: #fff;
+}
+.whitebg{
+  background-color: #fff;
+}
+.theme-btn{
+  border-radius: 10rpx;
+  background: #ffd600;
+  color: #000;
+  text-align: center;
+  padding: 20rpx 48rpx;
+  font-size: 28rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.theme-btn-light{
+  background-color: #fff;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+.pub-footer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 100rpx;
+  height: 100rpx;
+  background-color: #fff;
+}
+.theme-btn-big{
+  margin: 14rpx 20%;
+  height: 74rpx;
+  line-height: 74rpx;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  color: #000;
+}
+.theme-radio{
+  padding-right: 20rpx;
+}
+.theme-radio:before{
+  content: '';
+  display: inline-block;
+  border: 1px solid #bdbdbd;
+  border-radius: 50%;
+  padding: 12rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+  background: #fff center center no-repeat;
+  -webkit-background-size: 14rpx;
+  background-size: 14rpx;
+}
+.checked.theme-radio:before{
+  background-image: url("images/base/checked.png");
+  background-color: #ffd600;
+  border-color: #ffd600;
+}
+.text-hidden{
+  visibility: hidden;
+}
