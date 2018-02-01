@@ -12195,8 +12195,49 @@
       "y": 23.138287
     }
   ],
-  "users": [],
-  "carts": [],
-  "sites": [],
+  "users": [
+    {
+      "phone": "18600805411",
+      "selectSite": {
+        "linkman": "tang",
+        "sex": 0,
+        "phone": "18600805411",
+        "city": "北京市",
+        "site": "天安门广场",
+        "detailSite": "1513",
+        "userId": 1,
+        "x": 116.404081,
+        "y": 39.910098,
+        "id": 1
+      },
+      "id": 1
+    }
+  ],
+  "carts": [
+    {
+      "product_id": 50,
+      "userId": 1,
+      "product_img": "http://dummyimage.com/80x80/bd79f2&text=范娜",
+      "product_name": "只素已收军生",
+      "product_price": 90.6,
+      "checked": true,
+      "num": 1,
+      "id": 1
+    }
+  ],
+  "sites": [
+    {
+      "linkman": "tang",
+      "sex": 0,
+      "phone": "18600805411",
+      "city": "北京市",
+      "site": "天安门广场",
+      "detailSite": "1513",
+      "userId": 1,
+      "x": 116.404081,
+      "y": 39.910098,
+      "id": 1
+    }
+  ],
   "favors": []
 }

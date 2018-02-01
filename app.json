@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/category/category",
-    "pages/index/index",
     "pages/cart/cart",
+    "pages/index/index",
+    "pages/category/category",
     "pages/mine/mine"
   ],
   "subPackages": [

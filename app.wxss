@@ -58,7 +58,7 @@ page{
   padding-left: 28rpx;
 }
 .more{
-  background: url("images/base/cart-more.png") right center no-repeat;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAUCAMAAADImI+JAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAA/UExURUxpcV9fX11dXWNjY15eXl1dXVxcXFVVVWFhYV1dXVxcXF1dXVxcXF1dXV1dXV1dXV1dXVtbW1xcXFVVVV1dXboTcG8AAAAUdFJOUwAYsRIb2M8GFdWrtK630tt1uGkDwjJzxQAAAE1JREFUKM+10skNwCAUA1HWJMDPivuvlRYGifj85NO44h2bysGgUbkHXVC2CblxGZk8f5CvPgS76UGHVXdiLi91Bl1Q9syxJKnj4VI3APdgA3rXZybWAAAAAElFTkSuQmCC") right center no-repeat;
   -webkit-background-size: auto 20rpx;
   background-size: auto 20rpx;
   padding-right: 50rpx;
@@ -130,7 +130,7 @@ page{
   background-size: 14rpx;
 }
 .checked.theme-radio:before{
-  background-image: url("images/base/checked.png");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAALCAMAAACXmSduAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABpUExURUxpcf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6RiatkAAAAidFJOUwAUDaUD/goBiZmf+oR7inmTkHiYdasGsmsHuGX9vl4XV/zL4E9bAAAAVUlEQVQI12NgQAbyKDwGOUUFZK60jCwbEleCVQqZK8IqLgmiGSFcXiVRMRDNxM3JDqR4lJhZIBIcSkABPiUuFphGoICAkjA7wiQOJSVBdmSLhfjhTAAiVgOIoE2H8gAAAABJRU5ErkJggg==");
   background-color: #ffd600;
   border-color: #ffd600;
 }
