@@ -45,6 +45,38 @@
           </picker>
           <text class='group-receive-ext'>可预订</text>
         </view>
+        <view class='group-comment spline-top spline-bottom f14 pl14'>
+          <text decode>收货备注&nbsp;&nbsp;</text>
+          <view class='group-comment-input-wrap'>
+            <input type="text" placeholder="可输入100字以内特殊要求内容" class="group-comment-input" />
+          </view>
+        </view>
+        <view class='table'>
+          <view class='spline-bottom tr'>
+            <view class='td group-item-checkbox'>
+              <text decode>&nbsp;</text>
+            </view>
+            <view class='td group-item-img'>
+              <image src="http://dummyimage.com/80x80/def279&text=孔超"></image>
+            </view>
+            <view class='td group-item-detail'>
+              <view>商品名称</view>
+              <view class="product-specifics-wrap">
+                <view class="product-specifics">
+                  <text>￥价格</text>
+                </view>
+                <view class='product-operates'>
+                  <text class='inner'>-</text>
+                  <text class='product-operates-item'>2</text>
+                  <text class='inner'>+</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='group-footer spline-bottom pl14 f14'>
+          <text class='selectAll selectAll-false'>全选</text>共：<text class='redfont'>￥总价</text><text class='group-btn yellowbg'>选好了</text>
+        </view>
       </view>
     </view>
   </view>

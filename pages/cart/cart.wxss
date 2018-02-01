@@ -50,6 +50,7 @@
   padding: 14rpx 20rpx 14rpx 30rpx;
   text-align: left;
   width: 28%;
+  box-sizing: border-box;
 }
 .receive .more{
   position: absolute;
@@ -129,6 +130,8 @@
 }
 .group-comment-input-wrap{
   flex:1;
+  display: flex;
+  align-items: center;
   padding-right: 44rpx;
 }
 .group-comment-input{
@@ -140,6 +143,7 @@
   outline: none;
   text-indent: 10rpx;
   font-size: 28rpx;
+  padding-left: 8rpx;
 }
 .group-item-checkbox{
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAGhUExURQAAAN3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3X9qU9wAAACKdFJOUwAC6cvmQAcWAQnoBTrr6q3CC+ORyAqoslQUI1JjxIesNzvX4dWBfR/YBklVeOItjI92GewR0/INPqY9VgwQn6LkX4BIsO+bTL5+sbQbczLQNW+zHSU5YaMOly9Q3TxxGm2OHPA4htLbnCK9gmBmjVo0blO7RIksSxj+9wj6NqGvE84uru7UBPb7wdluvYcAAAFuSURBVDjLhZPle8IwEMZLaSnuNhju7szd3d3d3d2Nv3qBMVa6NNyH9+7y/NImuTsMY1oFhjQOeSbHM+mMVB7xi+CIYN6xvnN6CSKKjMmFZgrCdCiHrbTUExUGfQxEpHK0MJZGLFxD0QJP11n2/+PlhJiW8bt7eLBjksTYX9Kl1sAvQxKjv6EY72V7lfGB/C843Cb2t9M2/3gjl88OxaULOW8KoMpgXsrqllSEgpYl2VMdbaIrun0BRHaAhmJRIN5zNER+Abn1oaE4gWE312gGE3yARkyXgN4/gVxx0NBjAkjIg4bunoCc+NHQ3j0Q1xoaku0CWXUimeRKdiL4s4MoqM+Sc0MyBDMp7M95hbKaHZqayAc1dgUbYyQKU9RQxdKbVslcIdaoVVDKJtHTsjqTthYynImZ4lLXeysZiEHnnGZu0ze22mhpuL3NLYD0zaJ9Yz/wTCWp8HEkFXJRLBc+DL6k8Ff87cEtLtE/EPsGIoMs4A6mCo8AAAAASUVORK5CYII=") center center no-repeat;
@@ -153,16 +157,18 @@
 .group-item-img{
   width: 100rpx;
 }
-.group-item-img>img{
-  width: 100%;
+.group-item-img>image{
+  width: 100rpx;
+  height: 100rpx;
 }
 .product-operates{
   text-align: right;
 }
 .group-item-detail{
   padding-right: 24rpx;
+  width: 550rpx;
 }
-.group-item-detail>div{
+.group-item-detail>view{
   height: 80rpx;
   line-height: 80rpx;
 }
@@ -199,7 +205,7 @@
   width: 30%;
   overflow: hidden;
 }
-.product-specifics>span{
+.product-specifics>text{
   display: block;
   color: #858585;
   margin-bottom: 20rpx;
@@ -230,4 +236,14 @@
   vertical-align: top;
   font-size: 24rpx;
   margin: 0 10rpx;
+}
+.table{
+  width: 100%;
+}
+.tr{
+  display: table-row;
+}
+.td{
+   display: table-cell;
+   vertical-align: middle;
 }
