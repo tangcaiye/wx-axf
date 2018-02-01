@@ -127,10 +127,12 @@ Page({
     
     // 根据激活的排序方式进行排序
     let activeRanking = this.data.activeRanking
+    // 克隆对象,防止对原数组对象造成影响
+    let cloneActiveCategoryProducts = activeCategoryProducts.slice(0)
     if (activeRanking === '价格最低') {
-      activeCategoryProducts = activeCategoryProducts.sort((a, b) => a.price - b.price)
+      activeCategoryProducts = cloneActiveCategoryProducts.sort((a, b) => a.price - b.price)
     } else if (activeRanking === '价格最高') {
-      activeCategoryProducts = activeCategoryProducts.sort((a, b) => b.price - a.price)
+      activeCategoryProducts = cloneActiveCategoryProducts.sort((a, b) => b.price - a.price)
     }
     
     this.setData({
