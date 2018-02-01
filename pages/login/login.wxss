@@ -1,0 +1,50 @@
+.main{
+  top: 0;
+  bottom: 0;
+}
+.pic{
+  height: 138rpx;
+  background-image: url("http://i4.bvimg.com/605174/0959538f93b1d146.png");
+  background-repeat: no-repeat;
+  background-position: 20rpx bottom;
+  -webkit-background-size: auto 80%;
+  background-size: auto 80%;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: height .4s;
+  -o-transition: height .4s;
+  transition: height .4s;
+}
+.pic-word{
+  position: absolute;
+  top: 34rpx;
+  width: 62%;
+  right: 0;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  color: #000;
+}
+.inputs{
+  background-color: #fff;
+}
+.phone-padding{
+  padding: 0 30rpx;
+}
+.phone{
+  font-size: 28rpx;
+  outline: none;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+  border: 0;
+}
+.login-submit{
+  margin: 40rpx 12rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.pic-hide{
+  height: 0px !important;
+}

@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/cart/cart",
+    "pages/login/login",
     "pages/index/index",
+    "pages/cart/cart",
     "pages/category/category",
     "pages/mine/mine"
   ],
@@ -16,7 +17,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "爱鲜蜂",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

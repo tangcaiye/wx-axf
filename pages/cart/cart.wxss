@@ -223,7 +223,7 @@
   font-size: 48rpx;
   width: 58rpx;
   height: 58rpx;
-  line-height: 68rpx;
+  line-height: 58rpx;
   color: #d73e00;
   text-align: center;
   border: 1px solid #dcbd9e;
