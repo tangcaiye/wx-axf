@@ -25,7 +25,7 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 100rpx;
+  bottom: 0rpx;
 }
 .main{
   bottom: 0;
@@ -71,11 +71,11 @@
   overflow: hidden;
   padding-right: 24rpx;
 }
-.cart-group .group-name>span{
+.cart-group .group-name>text:nth-child(1){
   float: left;
   color: #999;
 }
-.cart-group .group-name>var{
+.cart-group .group-name>text:nth-child(2){
   float: right;
   height: 48rpx;
   line-height: 48rpx;
@@ -85,7 +85,7 @@
   text-align: center;
   color: #e64f1a;
 }
-.cart-group .group-name>span:before{
+.cart-group .group-name>text:nth-child(1):before{
   content: '';
   display: inline-block;
   width: 8rpx;
@@ -116,6 +116,7 @@
   border: none;
   font-size: 28rpx;
   background-color: transparent;
+  display: inline-block;
 }
 .group-comment{
   height: 100rpx;

@@ -1,6 +1,7 @@
 <!--pages/cart/cart.wxml-->
 <view class='page-cart'>
   <view class='main'>
+    <!--地址信息  -->
     <view class='table receive'>
       <view class='more extend-click'>修改</view>
       <view class='tr'>
@@ -23,6 +24,27 @@
       <view class='tr'>
         <view class='th'>收货地址</view>
         <view class='td'>飞电风扇的</view>
+      </view>
+    </view>
+    <!--收货时间等信息  -->
+    <view class='cart-groups-wraper'>
+      <view class='cart-group'>
+        <view class='group-name'>
+          <text>闪送超市</text>
+          <text>凑单专区</text>
+        </view>
+        <view class='group-proptext'>
+          ¥0起送，22:00前满¥30免运费，22:00后满¥50免运费
+        </view>
+        <view class='group-receive more spline-top'>
+          收货时间<text decode>&nbsp;&nbsp;</text>
+          <picker mode="multiSelector" value="{{multiIndex}}" range="{{multiArray}}" bindcolumnchange="changeTimes"  class="group-receive-select">
+            <view class="picker">
+              {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+            </view>
+          </picker>
+          <text class='group-receive-ext'>可预订</text>
+        </view>
       </view>
     </view>
   </view>
