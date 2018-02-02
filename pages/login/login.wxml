@@ -1,15 +1,15 @@
 <view class="login">
   <view class='main'>
     <view class='login'>
-      <view class='pic theme-bg'>
+      <view class='{{picHide?"pic theme-bg pic-hide": "pic theme-bg"}}'>
         <view class="pic-word">为了方便您及时查询订单信息，鲜蜂侠需要验证您的手机号为查询帐号</view>
       </view>
       <view class='inputs'>
         <view class='phone-padding spline-bottom'>
-          <input class="phone" type="number" placeholder="手机号码" />
+          <input class="phone" type="number" bindfocus="picHidefocus" bindblur="picHideBlue" bindinput="changePhone" placeholder="手机号码" />
         </view>
       </view>
-      <view class="theme-bg login-submit">确定</view>
+      <view class="theme-bg login-submit" bindtap='loginFn'>确定</view>
     </view>
   </view>
 </view>
