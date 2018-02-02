@@ -65,17 +65,14 @@ Page({
               // 初始化所选地址
               select_site: {}
             }
-            wx.request({
-              url: 'http://course.io:3000/users/2',
-              method: 'DELETE',
-              success: res => {
-                console.log(res.data)
-              }
-            })
-            // app.fetch(api.host + '/users', "post", userObj)
-            //   .then(res => {
-            //     console.log(res)
-            //   })
+            app.fetch(api.host + '/users', "post", userObj)
+              .then(res => {
+                // 这里因为微信开发工具在提交后会对页面执行刷新，所以这里在注册成功后将注册成功信息保存到本地
+                wx.setStorage({
+                  key: "userinfo",
+                  data: JSON.stringify(res)
+                })
+              })
           }
         })
     }

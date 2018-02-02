@@ -1,4 +1,4 @@
 let api = {
-  host: 'http://localhost:3000'
+  host: 'http://172.20.10.2:3000'
 }
 module.exports = api

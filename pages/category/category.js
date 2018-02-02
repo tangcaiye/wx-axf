@@ -31,9 +31,17 @@ Page({
    */
   onLoad: function (options) {
     let computedCategories = app.globalData.computedCategories
-    this.setData({
-      computedCategories: computedCategories
-    })
+    if (computedCategories.length > 0) {
+      this.setData({
+        computedCategories: computedCategories
+      })
+    } else {
+      app.getComputedCategories(computedCategories => {
+        this.setData({
+          computedCategories: computedCategories
+        })
+      })
+    }
     this.changeActiveCategoryProducts()
   },
   /* 

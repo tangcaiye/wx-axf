@@ -2,6 +2,9 @@
 let api = require('./utils/api.js')
 App({
   onLaunch () {
+    
+  },
+  getComputedCategories (cb) {
     wx.showLoading({
       title: '加载中...',
     })
@@ -23,6 +26,7 @@ App({
           }
         }
         this.globalData.computedCategories = categories
+        cb(categories)
         wx.hideLoading()
       })
   },
