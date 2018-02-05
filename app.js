@@ -12,12 +12,82 @@ App({
         .then(res=>{
           this.globalData.carts = res
         })
+      // 添加到全局数据中
+      this.globalData.userinfo = userinfo
     } else {
       // 没有读取到用户的登陆信息，自动跳转到login页面
       wx.redirectTo({
         url: 'pages/login/login'
       })
     } 
+  },
+  /* 
+   * 添加到购物车
+   * @param object product 商品对象
+   */
+  addCart(product) {
+    // 首先验证该商品在本地购物车中是否已经存在
+    let localCarts = this.globalData.carts
+    let userinfo = this.globalData.userinfo
+
+    // 假设不存在，需要添加
+    let addBol = true
+    for (let i = 0; i < localCarts.length; i++) {
+      if (localCarts[i].product_id === product.product_id) {
+        // 找到了,存在
+        addBol = false
+        // 更新数量
+        localCarts[i].num++
+        this.fetch(api.host + '/carts/' + localCarts[i].id, 'PATCH', {
+          num: localCarts[i].num
+        })
+          .then(res => {
+            if (res.id > 0) {
+              // 更新成功
+              wx.showToast({
+                title: '更新成功',
+              })
+            }
+          })
+        break
+      }
+    }
+    // 不存在
+    if (addBol) {
+      // 不存在，需要添加,构造需要添加到购物车中的商品对象
+      /* 
+        数据结构
+        {
+          商品在购物中表的 id,
+          商品的id product_id,
+          用户id user_id,
+          商品的数量,
+          商品的图片,
+          商品的名称,
+          商品的价格,
+          是否选择
+        }
+      */
+      let productToCartObj = {
+        product_id: product.product_id,
+        userId: userinfo.id,
+        product_img: product.imgs.min,
+        product_name: product.name,
+        product_price: product.price,
+        checked: true,
+        num: 1
+      }
+      // 添加到数据库中的购物车
+      this.fetch(api.host + '/carts', 'POST', productToCartObj)
+        .then(res => {
+          if (res.id > 0) {
+            localCarts.push(res)
+            wx.showToast({
+              title: '添加成功',
+            })
+          }
+        })
+    }
   },
   /* 
    * 获取该用户对应的购物车数据
@@ -70,7 +140,9 @@ App({
     // 保存的是合并后的商品数据
     computedCategories: [],
     // 购物车数据
-    carts: []
+    carts: [],
+    // 用户信息
+    userinfo: {}
   },
   /* 
    * 封装的请求方法

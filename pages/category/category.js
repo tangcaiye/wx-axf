@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取全局的商品数据
     let computedCategories = app.globalData.computedCategories
     if (computedCategories.length > 0) {
       this.setData({
@@ -147,5 +148,16 @@ Page({
     this.setData({
       activeCategoryProducts: activeCategoryProducts
     })
+  },
+  /* 
+   * 添加到购物车
+   * @param object product 商品对象
+   */
+  addCart (event) {
+    let product = event.currentTarget.dataset.product
+    console.log(product)
+    // 追加product_id(商品id)属性
+    product.product_id = product.id
+    app.addCart(product)
   }
 })

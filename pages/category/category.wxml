@@ -37,8 +37,8 @@
           </view>
         </view>
       </view>
-      <view class='productList-wrap'>
-        <navigator wx:for="{{activeCategoryProducts}}" wx:key="{{item.id}}" src="/packageA/pages/product-item/product-item?id={{item.id}}">
+      <scroll-view scroll-y class='productList-wrap'>
+        <navigator wx:for="{{activeCategoryProducts}}" wx:key="{{item.id}}" url="/packageA/pages/product-item/product-item?id={{item.id}}">
           <view class='dl'>
             <view class='dt'>
               <image src='{{item.imgs.min}}'></image>
@@ -54,12 +54,12 @@
               <view class='dd product-operates'>
                 <text class='inner'>-</text>
                 <text class='product-operates-item'>{{item.num}}</text>
-                <text class='inner'>+</text>
+                <text class='inner' data-product="{{item}}" catchtap='addCart'>+</text>
               </view>
             </view>
           </view>
         </navigator>
-      </view>
+      </scroll-view>
     </view>
   </view>
 </view>

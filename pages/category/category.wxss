@@ -116,18 +116,18 @@
   top: 82rpx;
   bottom: 0;
   width: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   background-color: #fff;
 }
-.productList-wrap>navigator{
+.productList-wrap navigator{
   border-bottom: 1px solid #e1dbdd;
   padding: 16rpx 20rpx;
   display: block;
 }
-.productList-wrap>navigator>.dl{
+.productList-wrap navigator .dl{
   overflow: hidden;
 }
-.productList-wrap>navigator>.dl>.dt{
+.productList-wrap navigator .dl .dt{
   float: left;
   width: 160rpx;
   height: 160rpx;
@@ -135,11 +135,11 @@
   overflow: hidden;
   text-align: center;
 }
-.productList-wrap>navigator>.dl>.dt>image{
+.productList-wrap navigator .dl .dt image{
   width: 100%;
   height: 100%;
 }
-.productList-wrap>navigator>.dl>.dd{
+.productList-wrap navigator .dl .dd{
   font-size: 24rpx;
 }
 .product-item-title{

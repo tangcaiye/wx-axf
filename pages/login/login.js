@@ -52,16 +52,20 @@ Page({
       app.fetch(api.host + '/users?phone=' + phone)
         .then(res => {
           // 判断这个接口是否返回了数据，如果返回就是存在，没返回就是没有这个手机号
-          console.log(res)
           if (res.length > 0) {
             // 登陆成功
             wx.showToast({
               title: '登陆成功',
             })
+            // 将用户信息添加到全局数据
+            app.globalData.userinfo = res
             // 提取该用户的购物车数据并添加到全局的购物车数据中
             app.getCart(res.id)
               .then(res => {
                 this.globalData.carts = res
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
               })
           } else {
             // 数据库没有这个用户，注册
@@ -75,6 +79,8 @@ Page({
             // 发送注册请求
             app.fetch(api.host + '/users', "post", userObj)
               .then(res => {
+                // 将用户信息添加到全局数据
+                app.globalData.userinfo = res
                 // 注册成功后先将注册的用户信息存储到本地缓存中
                 return new Promise(function (resolve, reject) {
                   wx.setStorage({
