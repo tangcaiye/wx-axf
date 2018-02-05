@@ -24,6 +24,7 @@ App({
   /* 
    * 添加到购物车
    * @param object product 商品对象
+   * @return arr   computedCategories 同步后的商品列表
    */
   addCart(product) {
     return new Promise((resolve, reject) => {
@@ -95,6 +96,61 @@ App({
                   resolve(computedCategories)
                 })
             }
+          })
+      }
+    })
+  },
+  /* 
+   * 减少商品
+   * @param object product 商品对象
+   */
+  subCart(product) {
+    return new Promise((resolve, reject) => {
+      let carts = this.globalData.carts
+      // 获取需要更改数量的购物对象
+      let cartObj = {}
+      // 购物车对象的下标
+      let index = 0
+      // 循环遍历提取该商品对应本地购物车中的商品对象
+      for (let i = 0; i < carts.length; i++) {
+        if (product.product_id === carts[i].product_id) {
+          cartObj = carts[i]
+          index = i
+        }
+      }
+      if (cartObj.num > 1) {
+        // 更改-》减少
+        cartObj.num--
+        this.fetch(api.host + '/carts/' + cartObj.id, 'PATCH', {
+          num: cartObj.num
+        })
+          .then(res => {
+            if (res.id > 0) {
+              // 更新全局的购物车对象
+              wx.showToast({
+                title: '更新成功',
+              })
+              this.globalData.carts = carts
+              return this.resetProductNum(cartObj)
+            }
+          })
+          .then(res => {
+            resolve()
+          })
+      } else {
+        // 从本地和数据库中删除该商品
+        this.fetch(api.host + '/carts/' + cartObj.id, 'DELETE')
+          .then(res => {
+            wx.showToast({
+              title: '删除成功',
+            })
+            cartObj.num--
+            return this.resetProductNum(cartObj)
+          })
+          .then(res => {
+            // 从购物车列表中将对象移除掉
+            carts.splice(index, 1)
+            resolve()
           })
       }
     })

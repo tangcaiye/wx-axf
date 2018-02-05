@@ -52,7 +52,7 @@
                 <text class='product-var'>￥{{item.price}}</text>
               </view>
               <view class='dd product-operates'>
-                <text class='inner'>-</text>
+                <text class='inner' data-product="{{item}}" catchtap='subCart'>-</text>
                 <text class='product-operates-item'>{{item.num}}</text>
                 <text class='inner' data-product="{{item}}" catchtap='addCart'>+</text>
               </view>

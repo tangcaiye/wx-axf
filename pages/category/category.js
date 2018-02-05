@@ -30,6 +30,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getComputedCategories()
+  },
+  /* 
+   * 监听页面显示
+   */
+  onShow () {
+    this.getComputedCategories()
+  },
+  /* 
+   * 获取商品列表
+   */
+  getComputedCategories() {
     // 获取全局的商品数据
     let computedCategories = app.globalData.computedCategories
     if (computedCategories.length > 0) {
@@ -155,7 +167,6 @@ Page({
    */
   addCart (event) {
     let product = event.currentTarget.dataset.product
-    console.log(product)
     // 追加product_id(商品id)属性
     product.product_id = product.id
     app.addCart(product)
@@ -166,5 +177,24 @@ Page({
         })
         this.changeActiveCategoryProducts()
       })
+  },
+  /* 
+   * 减少商品数量
+   * @param object product 商品对象
+   */
+  subCart (event) {
+    let product = event.currentTarget.dataset.product
+    if (product.num > 0) {
+      product.product_id = product.id
+      app.subCart(product)
+        .then(res => {
+          let computedCategories = app.globalData.computedCategories
+          // 添加到购物车后需要更新本地购物车及商品的num属性
+          this.setData({
+            computedCategories: computedCategories
+          })
+          this.changeActiveCategoryProducts()
+        })
+    }
   }
 })

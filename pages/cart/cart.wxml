@@ -86,7 +86,7 @@ module.exports = {
           </view>
         </view>
         <view class='table'>
-          <view class='spline-bottom tr' wx:for="{{carts}}" wx:key="{{item.id}}">
+          <navigator class='spline-bottom tr' wx:for="{{carts}}" wx:key="{{item.id}}" url='/packageA/pages/product-item/product-item?id={{item.product_id}}'>
             <view class='{{item.checked? "td group-item-checkbox active": "td group-item-checkbox"}}' data-product="{{item}}" catchtap='changeChecked'>
               <text decode>&nbsp;</text>
             </view>
@@ -100,13 +100,13 @@ module.exports = {
                   <text>￥{{item.product_price}}</text>
                 </view>
                 <view class='product-operates'>
-                  <text class='inner'>-</text>
+                  <text class='inner' data-product="{{item}}" catchtap='subCart'>-</text>
                   <text class='product-operates-item'>{{item.num}}</text>
-                  <text class='inner'>+</text>
+                  <text class='inner' data-product="{{item}}" catchtap='addCart'>+</text>
                 </view>
               </view>
             </view>
-          </view>
+          </navigator>
         </view>
         <view class='group-footer spline-bottom pl14 f14'>
           <text class='selectAll selectAll-false' class='{{m1.checkedAll(carts)?"selectAll selectAll-true": "selectAll selectAll-false"}}'>全选</text>共：<text class='redfont'>￥{{m1.total(carts)}}</text><text class='group-btn yellowbg'>选好了</text>

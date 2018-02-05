@@ -113,5 +113,24 @@ Page({
           }
         }
       })
+  },
+  /* 
+   * 添加商品
+   */
+  addCart (event) {
+    let product = event.currentTarget.dataset.product
+    app.addCart(product)
+      .then(res => {
+        let carts = app.globalData.carts
+        this.setData({
+          carts: carts
+        })
+      })
+  },
+  /* 
+   * 减少商品
+   */
+  subCart (event) {
+
   }
 })
