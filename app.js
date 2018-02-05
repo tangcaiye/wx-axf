@@ -12,7 +12,12 @@ App({
         .then(res=>{
           this.globalData.carts = res
         })
-    }
+    } else {
+      // 没有读取到用户的登陆信息，自动跳转到login页面
+      wx.redirectTo({
+        url: 'pages/login/login'
+      })
+    } 
   },
   /* 
    * 获取该用户对应的购物车数据
@@ -33,7 +38,8 @@ App({
    */
   getComputedCategories (cb) {
     wx.showLoading({
-      title: '加载中...',
+      title: '加载商品数据中...',
+      mask: true
     })
     let categories = []
     let products = []
@@ -71,21 +77,18 @@ App({
    * @param string method 请求的方法
    * @param object data   请求携带的数据
    */
-  fetch(url, method = "get", data = {},) {
+  fetch(url, method = "GET", data = {},) {
     return new Promise(function (resolve, reject) {
-      
+      console.log(url)
       wx.request({
         url: url,
         data: data,
         method: method,
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
         success: res => {
           resolve(res.data)
         },
         fail: res => {
-          reject('请求失败')
+          reject('请求失败aa')
         }
       })
     })

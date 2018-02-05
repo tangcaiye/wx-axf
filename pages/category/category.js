@@ -35,14 +35,15 @@ Page({
       this.setData({
         computedCategories: computedCategories
       })
+      this.changeActiveCategoryProducts()
     } else {
       app.getComputedCategories(computedCategories => {
         this.setData({
           computedCategories: computedCategories
         })
+        this.changeActiveCategoryProducts()
       })
     }
-    this.changeActiveCategoryProducts()
   },
   /* 
    * 切换分类的下标

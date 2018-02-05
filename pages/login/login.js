@@ -1,4 +1,4 @@
-const app = getApp()
+  const app = getApp()
 const api = require('../../utils/api.js')
 
 // packageA/pages/login/login.js
@@ -55,8 +55,14 @@ Page({
           console.log(res)
           if (res.length > 0) {
             // 登陆成功
-            // 提取该用户的购物车数据
-            console.log('登陆成功')
+            wx.showToast({
+              title: '登陆成功',
+            })
+            // 提取该用户的购物车数据并添加到全局的购物车数据中
+            app.getCart(res.id)
+              .then(res => {
+                this.globalData.carts = res
+              })
           } else {
             // 数据库没有这个用户，注册
             let userObj = {
@@ -65,12 +71,33 @@ Page({
               // 初始化所选地址
               select_site: {}
             }
+            
+            // 发送注册请求
             app.fetch(api.host + '/users', "post", userObj)
               .then(res => {
-                // 这里因为微信开发工具在提交后会对页面执行刷新，所以这里在注册成功后将注册成功信息保存到本地
-                wx.setStorage({
-                  key: "userinfo",
-                  data: JSON.stringify(res)
+                // 注册成功后先将注册的用户信息存储到本地缓存中
+                return new Promise(function (resolve, reject) {
+                  wx.setStorage({
+                    key: "userinfo",
+                    data: JSON.stringify(res),
+                    success () {
+                      return resolve()
+                    }
+                  })
+                })
+              })
+              .then(() => {
+                // 显示注册成功并跳转到首页
+                wx.showToast({
+                  title: '注册成功',
+                  icon: 'success',
+                  duration: 2000,
+                  mask: true,
+                  success () {
+                    wx.switchTab({
+                      url: '/pages/index/index',
+                    })
+                  }
                 })
               })
           }
