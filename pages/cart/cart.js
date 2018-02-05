@@ -2,6 +2,7 @@
 let times = []
 let dayList = ['今天', '明天', '后天']
 let app = getApp()
+let api = require('../../utils/api.js')
 Page({
 
   /**
@@ -88,5 +89,29 @@ Page({
     this.setData({
       carts: carts
     })
+  },
+  /* 
+   * 切换商品是否勾选
+   * @param object product 商品对象
+   */
+  changeChecked (event) {
+    let product = event.currentTarget.dataset.product
+    let carts = app.globalData.carts
+    // console.log(product)
+    app.fetch(api.host + '/carts/' + product.id, 'PATCH', {
+      checked: !product.checked
+    })
+      .then(res => {
+        if (res.id > 0) {
+          for (let i = 0; i < carts.length; i++) {
+            if (carts[i].id === product.id) {
+              carts[i].checked = res.checked
+              this.setData({
+                carts: carts
+              })
+            }
+          }
+        }
+      })
   }
 })

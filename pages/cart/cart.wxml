@@ -1,6 +1,9 @@
 <wxs module="m1">
+/*
+ * 是否为全选
+ */
 var checkedAll = function(carts) {
-  
+
   var checkedAll = true
   for (var i = 0; i < carts.length; i++) {
     if (!carts[i].checked) {
@@ -10,8 +13,24 @@ var checkedAll = function(carts) {
   }
   return checkedAll
 }
+/*
+ * 统计总价
+*/
+var total = function (carts) {
+  var result = 0
+  var carts = carts
+  for (var i = 0; i < carts.length; i++) {
+    if (carts[i].checked) {
+      result += (carts[i].num * carts[i].product_price)
+    }
+  }
+  return result.toFixed(2)
+}
 
-module.exports.checkedAll = checkedAll;
+module.exports = {
+  checkedAll: checkedAll,
+  total: total
+}
 </wxs>
 <!--pages/cart/cart.wxml-->
 <view class='page-cart'>
@@ -68,11 +87,11 @@ module.exports.checkedAll = checkedAll;
         </view>
         <view class='table'>
           <view class='spline-bottom tr' wx:for="{{carts}}" wx:key="{{item.id}}">
-            <view class='{{item.checked? "td group-item-checkbox active": "td group-item-checkbox"}}'>
+            <view class='{{item.checked? "td group-item-checkbox active": "td group-item-checkbox"}}' data-product="{{item}}" catchtap='changeChecked'>
               <text decode>&nbsp;</text>
             </view>
             <view class='td group-item-img'>
-              <image src="{{item.product_img}}"></image>
+              <image lazy-load src="{{item.product_img}}"></image>
             </view>
             <view class='td group-item-detail'>
               <view>{{item.product_name}}</view>
@@ -90,7 +109,7 @@ module.exports.checkedAll = checkedAll;
           </view>
         </view>
         <view class='group-footer spline-bottom pl14 f14'>
-          <text class='selectAll selectAll-false' class='{{m1.checkedAll(carts)?"selectAll selectAll-true": "selectAll selectAll-false"}}'>全选</text>共：<text class='redfont'>￥总价</text><text class='group-btn yellowbg'>选好了</text>
+          <text class='selectAll selectAll-false' class='{{m1.checkedAll(carts)?"selectAll selectAll-true": "selectAll selectAll-false"}}'>全选</text>共：<text class='redfont'>￥{{m1.total(carts)}}</text><text class='group-btn yellowbg'>选好了</text>
         </view>
       </view>
     </view>

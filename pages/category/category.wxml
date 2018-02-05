@@ -41,7 +41,7 @@
         <navigator wx:for="{{activeCategoryProducts}}" wx:key="{{item.id}}" url="/packageA/pages/product-item/product-item?id={{item.id}}">
           <view class='dl'>
             <view class='dt'>
-              <image src='{{item.imgs.min}}'></image>
+              <image lazy-load src='{{item.imgs.min}}'></image>
             </view>
             <view class='dd nowrap product-item-title'>
               {{item.name}}
