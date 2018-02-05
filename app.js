@@ -26,68 +26,100 @@ App({
    * @param object product 商品对象
    */
   addCart(product) {
-    // 首先验证该商品在本地购物车中是否已经存在
-    let localCarts = this.globalData.carts
-    let userinfo = this.globalData.userinfo
+    return new Promise((resolve, reject) => {
+      // 首先验证该商品在本地购物车中是否已经存在
+      let localCarts = this.globalData.carts
+      let userinfo = this.globalData.userinfo
 
-    // 假设不存在，需要添加
-    let addBol = true
-    for (let i = 0; i < localCarts.length; i++) {
-      if (localCarts[i].product_id === product.product_id) {
-        // 找到了,存在
-        addBol = false
-        // 更新数量
-        localCarts[i].num++
-        this.fetch(api.host + '/carts/' + localCarts[i].id, 'PATCH', {
-          num: localCarts[i].num
-        })
+      // 假设不存在，需要添加
+      let addBol = true
+      for (let i = 0; i < localCarts.length; i++) {
+        if (localCarts[i].product_id === product.product_id) {
+          // 找到了,存在
+          addBol = false
+          // 更新数量
+          localCarts[i].num++
+          this.fetch(api.host + '/carts/' + localCarts[i].id, 'PATCH', {
+            num: localCarts[i].num
+          })
+            .then(res => {
+              if (res.id > 0) {
+                // 更新成功
+                wx.showToast({
+                  title: '更新成功',
+                })
+                this.resetProductNum(res)
+                  .then(computedCategories => {
+                    resolve(computedCategories)
+                  })
+              }
+            })
+          break
+        }
+      }
+      // 不存在
+      if (addBol) {
+        // 不存在，需要添加,构造需要添加到购物车中的商品对象
+        /* 
+          数据结构
+          {
+            商品在购物中表的 id,
+            商品的id product_id,
+            用户id user_id,
+            商品的数量,
+            商品的图片,
+            商品的名称,
+            商品的价格,
+            是否选择
+          }
+        */
+        let productToCartObj = {
+          product_id: product.product_id,
+          userId: userinfo.id,
+          product_img: product.imgs.min,
+          product_name: product.name,
+          product_price: product.price,
+          checked: true,
+          num: 1
+        }
+        // 添加到数据库中的购物车
+        this.fetch(api.host + '/carts', 'POST', productToCartObj)
           .then(res => {
             if (res.id > 0) {
-              // 更新成功
+              localCarts.push(res)
               wx.showToast({
-                title: '更新成功',
+                title: '添加成功',
               })
+              this.resetProductNum(res)
+                .then(computedCategories => {
+                  resolve(computedCategories)
+                })
             }
           })
-        break
       }
-    }
-    // 不存在
-    if (addBol) {
-      // 不存在，需要添加,构造需要添加到购物车中的商品对象
-      /* 
-        数据结构
-        {
-          商品在购物中表的 id,
-          商品的id product_id,
-          用户id user_id,
-          商品的数量,
-          商品的图片,
-          商品的名称,
-          商品的价格,
-          是否选择
-        }
-      */
-      let productToCartObj = {
-        product_id: product.product_id,
-        userId: userinfo.id,
-        product_img: product.imgs.min,
-        product_name: product.name,
-        product_price: product.price,
-        checked: true,
-        num: 1
-      }
-      // 添加到数据库中的购物车
-      this.fetch(api.host + '/carts', 'POST', productToCartObj)
-        .then(res => {
-          if (res.id > 0) {
-            localCarts.push(res)
-            wx.showToast({
-              title: '添加成功',
-            })
+    })
+  },
+  /* 
+   * 重置本地商品的数量
+   * @param   object  product 商品对象
+   * @return  arr     computedCategories 同步后的商品列表
+   */
+  resetProductNum (product) {
+    let computedCategories = this.globalData.computedCategories
+    return new Promise((resolve, reject) => {
+      label:
+      for (let i = 0; i < computedCategories.length; i++) {
+        let products = computedCategories[i].products
+        for (let j = 0; j < products.length; j++) {
+          if (products[j].id === product.product_id) {
+            products[j].num = product.num
+            break label
           }
-        })
-    }
+        }
+      }
+      this.globalData.computedCategories = computedCategories
+      resolve(computedCategories)
+    })
   },
   /* 
    * 获取该用户对应的购物车数据
@@ -98,6 +130,8 @@ App({
     return new Promise((resolve, reject) => {
       this.fetch(api.host + '/carts?userId=' + id)
         .then(res => {
+          // 将购物车数据添加到全局
+          this.globalData.carts = res
           resolve(res)
         })
     })
@@ -129,8 +163,24 @@ App({
           }
         }
         this.globalData.computedCategories = categories
-        cb(categories)
         wx.hideLoading()
+        // 获取购物车数据并同步
+        return this.getCart(this.globalData.userinfo.id)
+      })
+      .then(data => {
+        let computedCategories = this.globalData.computedCategories
+        for (let i = 0; i < computedCategories.length; i++) {
+          let products = computedCategories[i].products
+          for (let j = 0; j < products.length; j++) {
+            for (let z = 0; z < data.length; z++) {
+              if (products[j].id === data[z].product_id) {
+                products[j].num = data[z].num
+                break
+              }
+            }
+          }
+        }
+        cb(computedCategories)
       })
   },
   /* 

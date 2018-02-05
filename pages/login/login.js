@@ -1,4 +1,4 @@
-  const app = getApp()
+const app = getApp()
 const api = require('../../utils/api.js')
 
 // packageA/pages/login/login.js
@@ -59,14 +59,9 @@ Page({
             })
             // 将用户信息添加到全局数据
             app.globalData.userinfo = res
-            // 提取该用户的购物车数据并添加到全局的购物车数据中
-            app.getCart(res.id)
-              .then(res => {
-                this.globalData.carts = res
-                wx.switchTab({
-                  url: '/pages/index/index',
-                })
-              })
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
           } else {
             // 数据库没有这个用户，注册
             let userObj = {

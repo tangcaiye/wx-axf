@@ -159,5 +159,12 @@ Page({
     // 追加product_id(商品id)属性
     product.product_id = product.id
     app.addCart(product)
+      .then(computedCategories => {
+        // 添加到购物车后需要更新本地购物车及商品的num属性
+        this.setData({
+          computedCategories: computedCategories
+        })
+        this.changeActiveCategoryProducts()
+      })
   }
 })

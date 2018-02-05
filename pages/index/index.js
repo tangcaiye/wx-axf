@@ -7,7 +7,7 @@ Page({
     computedCategories: []
   },
   onLoad () {
-     let computedCategories = app.globalData.computedCategories
+    let computedCategories = app.globalData.computedCategories
     if (computedCategories.length > 0) {
       this.setData({
         computedCategories: computedCategories

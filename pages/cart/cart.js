@@ -1,6 +1,7 @@
 // pages/cart/cart.js
 let times = []
 let dayList = ['今天', '明天', '后天']
+let app = getApp()
 Page({
 
   /**
@@ -8,7 +9,9 @@ Page({
    */
   data: {
     multiArray: [],
-    multiIndex: [0, 0]
+    multiIndex: [0, 0],
+    // 购物车数据
+    carts: []
   },
 
   /**
@@ -74,6 +77,16 @@ Page({
     }
     this.setData({
       multiIndex: multiIndex
+    })
+  },
+  /* 
+   * 监听页面显示
+   */
+  onShow () {
+    // 获取全局的购物车数据
+    let carts = app.globalData.carts
+    this.setData({
+      carts: carts
     })
   }
 })
