@@ -34,6 +34,7 @@ module.exports = {
 </wxs>
 <!--pages/cart/cart.wxml-->
 <view class='page-cart'>
+  <header-gray header-title="购物车"></header-gray>
   <scroll-view scroll-y class='main'>
     <!--地址信息  -->
     <view class='table receive'>
