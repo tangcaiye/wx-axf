@@ -247,3 +247,6 @@
    display: table-cell;
    vertical-align: middle;
 }
+.cart-empty-btn{
+  display: inline-block;
+}

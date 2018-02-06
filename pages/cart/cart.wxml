@@ -34,8 +34,7 @@ module.exports = {
 </wxs>
 <!--pages/cart/cart.wxml-->
 <view class='page-cart'>
-  <header-gray header-title="购物车"></header-gray>
-  <scroll-view scroll-y class='main'>
+  <scroll-view scroll-y class='main' hidden='{{!(carts.length>0)}}'>
     <!--地址信息  -->
     <view class='table receive'>
       <view class='more extend-click'>修改</view>
@@ -115,4 +114,12 @@ module.exports = {
       </view>
     </view>
   </scroll-view>
+  <!--购物车没有商品的时候显示  -->
+  <view class='main' hidden='{{carts.length>0}}'>
+    <view class='empty-notice theme-font-gray'>
+      <view class='notice-icon'></view>  
+      <view>亲，购物车空空的耶~ </view>
+      <navigator url='/pages/category/category'  class="theme-spline cart-empty-btn">去逛逛</navigator>
+    </view>
+  </view>
 </view>

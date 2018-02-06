@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "购物车",
-  "usingComponents": {
-    "header-gray": "/components/header-gray/header-gray"
-  }
+  "navigationBarTitleText": "购物车"
 }

@@ -4,9 +4,11 @@ App({
   onLaunch () {
     // 读取保存在本地的用户信息
     let userinfo = wx.getStorageSync('userinfo')
+    
     if (userinfo) {
       // 如果userinfo不等于空,那么就提取里面的值
       userinfo = JSON.parse(userinfo)
+      console.log(userinfo)
       // 获取改用户的购物车数据
       this.getCart(userinfo.id)
         .then(res=>{
@@ -31,7 +33,7 @@ App({
       // 首先验证该商品在本地购物车中是否已经存在
       let localCarts = this.globalData.carts
       let userinfo = this.globalData.userinfo
-
+      console.log(userinfo)
       // 假设不存在，需要添加
       let addBol = true
       for (let i = 0; i < localCarts.length; i++) {

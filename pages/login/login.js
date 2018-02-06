@@ -57,8 +57,16 @@ Page({
             wx.showToast({
               title: '登陆成功',
             })
+            // 因为返回的res是数组
+            res = res[0]
             // 将用户信息添加到全局数据
             app.globalData.userinfo = res
+            // 写到缓存中
+            wx.setStorage({
+              key: "userinfo",
+              data: JSON.stringify(res)
+            })
+            // 跳转到首页
             wx.switchTab({
               url: '/pages/index/index',
             })
