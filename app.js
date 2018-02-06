@@ -8,7 +8,6 @@ App({
     if (userinfo) {
       // 如果userinfo不等于空,那么就提取里面的值
       userinfo = JSON.parse(userinfo)
-      console.log(userinfo)
       // 获取改用户的购物车数据
       this.getCart(userinfo.id)
         .then(res=>{

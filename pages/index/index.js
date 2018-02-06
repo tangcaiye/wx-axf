@@ -25,5 +25,15 @@ Page({
           bannar: res
         })
       })
+  },
+  /* 
+   * 添加到购物车
+   * @param object product 商品对象
+   */
+  addCart(event) {
+    let product = event.currentTarget.dataset.product
+    // 追加product_id(商品id)属性
+    product.product_id = product.id
+    app.addCart(product)
   }
 })

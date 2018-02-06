@@ -131,6 +131,13 @@ Page({
    * 减少商品
    */
   subCart (event) {
-
+    let product = event.currentTarget.dataset.product
+    app.subCart(product)
+      .then(res => {
+        let carts = app.globalData.carts
+        this.setData({
+          carts: carts
+        })
+      })
   }
 })

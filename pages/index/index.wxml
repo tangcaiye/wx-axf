@@ -27,7 +27,7 @@
                 <view>{{product.unit}}ml</view>
                 <view>￥{{product.price}}</view>
               </view>
-              <view class="product-specifics-right">+</view>
+              <view class="product-specifics-right"  data-product="{{product}}" catchtap='addCart'>+</view>
             </view>
           </navigator>
         </view>

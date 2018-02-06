@@ -1,2 +1,41 @@
-<!--packageA/pages/product-item/product-item.wxml-->
-<text>packageA/pages/product-item/product-item.wxml</text>
+<view  class="detail">
+    <view class="main">
+        <view class="block">
+            <view class="block-img">
+                <image src="{{productInfo.imgs.min}}"></image>
+            </view>
+            <view class="block-price">
+              <text>{{productInfo.name}}</text>
+              <text>￥{{productInfo.price}}</text>
+            </view>
+        </view> 
+         <!-- 商品详情 -->
+      <view class="block-detail">
+        <view class="detail-div">商品详情</view>
+        <view class="detail-p"><text decode>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌               </text ><text class="detail-span">{{productInfo.brand}}</text></view>
+        <view  class="detail-p">产品规格<text class="detail-span">{{productInfo.unit}}</text></view>
+      </view>
+      <!-- 爱鲜蜂图片区域 -->
+      <view class="axf-img">
+        <image src="../../../images/axf.jpg"></image>
+      </view>
+      <!-- 底部 -->
+      <view  class="footer">
+        <view  class="collect">
+          <text class="collect-span">收藏</text>
+          <view class="collect-add">
+            添加商品：
+            <view  class="btn-wrap">
+              <text>-</text>
+               <text>10</text>
+              <text>+</text>
+            </view>
+          </view>
+        </view>
+        <view  class="append">
+          <view class="append-img"></view>
+          <text>10</text>
+        </view>
+      </view>
+    </view>
+</view>
