@@ -26,16 +26,16 @@
           <view class="collect-add">
             添加商品：
             <view  class="btn-wrap">
-              <text>-</text>
-               <text>10</text>
-              <text>+</text>
+              <text catchtap='subCart'>-</text>
+               <text>{{productInfo.num}}</text>
+              <text catchtap='addCart'>+</text>
             </view>
           </view>
         </view>
-        <view  class="append">
+        <navigator open-type='switchTab' url='/pages/cart/cart' class='append'>
           <view class="append-img"></view>
-          <text>10</text>
-        </view>
+          <text>{{productInfo.num}}</text>
+        </navigator>
       </view>
     </view>
 </view>
