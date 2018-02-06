@@ -1,0 +1,23 @@
+<view class="site">
+  <view class='main'>
+    <!--没有地址的时候  -->
+    <view class='empty-notice'>
+      <view class='notice-icon'></view>
+      <view>您还没地址哦~</view>
+    </view>
+    <!--显示地址列表  -->
+    <view class='addr-list block'>
+      <view class='addr-item spline-bottom' wx:for="{{sites}}" wx:key="{{item.id}}">
+        <view class='addr-desc'>
+          <view class='no-wrap'><text decode>{{item.linkman}}&nbsp;&nbsp;&nbsp;{{item.phone}}</text></view>
+          <view class='no-wrap theme-font-gray'><text decode>{{item.city}}&nbsp;{{item.site}}</text></view>
+        </view>
+        <view class='addr-edit'></view>
+      </view>
+    </view>
+    <!--新增地址  -->
+    <view class='pub-footer spline-bottom spline-top'>
+      <view class='theme-btn-big yellowbg'>新增地址</view>
+    </view>
+  </view>
+</view>

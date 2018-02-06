@@ -15,6 +15,10 @@ App({
         })
       // 添加到全局数据中
       this.globalData.userinfo = userinfo
+      // 临时代码，方便开发
+      wx.redirectTo({
+        url: 'packageA/pages/add-site/add-site'
+      })
     } else {
       // 没有读取到用户的登陆信息，自动跳转到login页面
       wx.redirectTo({
@@ -32,7 +36,6 @@ App({
       // 首先验证该商品在本地购物车中是否已经存在
       let localCarts = this.globalData.carts
       let userinfo = this.globalData.userinfo
-      console.log(userinfo)
       // 假设不存在，需要添加
       let addBol = true
       for (let i = 0; i < localCarts.length; i++) {

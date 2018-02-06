@@ -10,7 +10,9 @@
     {
       "root": "packageA",
       "pages": [
-        "pages/product-item/product-item"
+        "pages/product-item/product-item",
+        "pages/site/site",
+        "pages/add-site/add-site"
       ]
     }
   ],

@@ -1,0 +1,50 @@
+<view class="add-site">
+  <view class='main'>
+    <view class='edit-form whitebg'>
+      <view class='table addr-edit'>
+        <view class='tr spline-top'>
+          <view class='th'>联系人</view>
+          <view class='td'>
+            <input type="text" class="addr-input" placeholder="收货人姓名"></input>
+          </view>
+        </view>
+        <view class='tr spline-top'>
+          <view class='th'><text decode>&nbsp;</text></view>
+          <view class='td site-center'>
+            <text class='theme-radio'>先生</text>
+            <text class='theme-radio'>女士</text>
+          </view>
+        </view>
+        <view class='tr spline-top'>
+          <view class='th'>手机号码</view>
+          <view class='td'>
+            <input type="text" placeholder="鲜蜂侠联系您的电话"></input>
+          </view>
+        </view>
+        <view class='tr spline-top'>
+          <view class='th'>所在城市</view>
+          <view class='more td'>
+            <picker value="{{selectedCity}}" range="{{citys}}">
+              <view class="site-center">
+                当前选择：{{citys[selectedCity]}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <!-- 点击跳转到地图页面 -->
+        <view class='tr spline-top'>
+          <view class='th'>所在地区</view>
+          <view class='td more'>
+            <input type="text" placeholder="请选择您的住宅小区、大厦或学校"></input>
+          </view>
+        </view>
+        <view class='tr spline-top'>
+          <view class='th'>详细地址</view>
+          <view class='td'>
+            <input type="text" placeholder="请输入楼号门牌号等详细信息"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

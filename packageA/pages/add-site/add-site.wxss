@@ -1,0 +1,45 @@
+.main{
+  top: 0;
+  bottom: 0;
+  font-size: 28rpx;
+}
+.table{
+  display: table;
+  width: 100%;
+}
+.tr{
+  /* display: table-row; */
+  display: flex;
+  width: 100%;
+}
+.td{
+  flex: 1;
+}
+.save{
+  position: absolute;
+  top: 0;
+  right: 12rpx;
+  text-align: center;
+  width: 120rpx;
+  height:88rpx;
+  line-height:88rpx;
+  font-size: 28rpx;
+  z-index: 2;
+}
+.select-city{
+  width: 90%;
+}
+.addr-edit .th{
+  padding: 20rpx 0 20rpx 30rpx;
+  text-align: left;
+  width: 140rpx;
+  line-height: 40rpx;
+  font-weight: 400;
+}
+.site-center{
+   padding: 20rpx 0; 
+}
+.addr-edit .td input{
+  height: 100%;
+  line-height: 100%;
+}
