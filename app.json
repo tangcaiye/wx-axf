@@ -12,7 +12,8 @@
       "pages": [
         "pages/product-item/product-item",
         "pages/site/site",
-        "pages/add-site/add-site"
+        "pages/add-site/add-site",
+        "pages/select-site/select-site"
       ]
     }
   ],

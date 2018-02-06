@@ -17,13 +17,16 @@ App({
       this.globalData.userinfo = userinfo
       // 临时代码，方便开发
       wx.redirectTo({
-        url: 'packageA/pages/add-site/add-site'
+        url: 'packageA/pages/select-site/select-site'
       })
     } else {
-      // 没有读取到用户的登陆信息，自动跳转到login页面
       wx.redirectTo({
-        url: 'pages/login/login'
+        url: 'packageA/pages/select-site/select-site'
       })
+      // 没有读取到用户的登陆信息，自动跳转到login页面
+      // wx.redirectTo({
+      //   url: 'pages/login/login'
+      // })
     } 
   },
   /* 
