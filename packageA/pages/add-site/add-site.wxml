@@ -24,9 +24,9 @@
         <view class='tr spline-top'>
           <view class='th'>所在城市</view>
           <view class='more td'>
-            <picker value="{{selectedCity}}" range="{{citys}}">
+            <picker value="{{selectedCity}}" range="{{citys}}" bindchange='changeSelectedCityIndex'>
               <view class="site-center">
-                当前选择：{{citys[selectedCity]}}
+                当前选择：{{citys[selectedCityIndex]}}
               </view>
             </picker>
           </view>
@@ -35,7 +35,7 @@
         <view class='tr spline-top'>
           <view class='th'>所在地区</view>
           <view class='td more'>
-            <input type="text" placeholder="请选择您的住宅小区、大厦或学校"></input>
+            <input type="text" placeholder="请选择您的住宅小区、大厦或学校" bindtap='selectSite'></input>
           </view>
         </view>
         <view class='tr spline-top'>

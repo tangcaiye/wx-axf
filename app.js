@@ -16,18 +16,18 @@ App({
       // 添加到全局数据中
       this.globalData.userinfo = userinfo
       // 临时跳转代码，方便开发
-      wx.redirectTo({
+      /* wx.redirectTo({
         url: 'packageA/pages/select-site/select-site'
-      })
+      }) */
     } else {
       // 临时跳转代码，方便开发
-      wx.redirectTo({
+      /* wx.redirectTo({
         url: 'packageA/pages/select-site/select-site'
-      })
+      }) */
       // 没有读取到用户的登陆信息，自动跳转到login页面
-      // wx.redirectTo({
-      //   url: 'pages/login/login'
-      // })
+      wx.redirectTo({
+        url: 'pages/login/login'
+      })
     } 
   },
   /* 

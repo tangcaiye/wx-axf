@@ -17,7 +17,7 @@
     </view>
     <!--新增地址  -->
     <view class='pub-footer spline-bottom spline-top'>
-      <view class='theme-btn-big yellowbg'>新增地址</view>
+      <view class='theme-btn-big yellowbg' bindtap='addSite'>新增地址</view>
     </view>
   </view>
 </view>
