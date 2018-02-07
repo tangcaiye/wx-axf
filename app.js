@@ -255,7 +255,11 @@ App({
     // 购物车数据
     carts: [],
     // 用户信息
-    userinfo: {}
+    userinfo: {},
+    // 所选城市
+    selectedCity: '深圳市',
+    // 所选地址
+    selectedSite: ''
   },
   /* 
    * 封装的请求方法

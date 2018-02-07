@@ -1,7 +1,7 @@
 <view class='main'>
   <input type="text" class="title-form" placeholder="请输入地址" maxlength="10"/>
   <!--地图容器-->
-  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="17" show-location="true" markers="{{markers}}"></map>
   <view class='pois-list'>
     <view>
       <view class='spline-bottom'>
