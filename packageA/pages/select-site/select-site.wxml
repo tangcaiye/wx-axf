@@ -1,21 +1,22 @@
 <view class='main'>
-  <input type="text" class="title-form" placeholder="请输入地址" maxlength="10"/>
+  <!--这里背景图显示会有两个图片，为小程序bug,暂无解决方案.  -->
+  <input type="text" class="title-form" placeholder="请输入地址" maxlength="10" bindinput="searchSite" />
   <!--地图容器-->
   <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="17" show-location="true" markers="{{markers}}"></map>
-  <view class='pois-list'>
-    <view>
+  <scroll-view scroll-y class='pois-list'>
+    <view class='pois-item-wrap' wx:for="{{rgcData}}" wx:key="{{item.id}}" data-location="{{item.location}}">
       <view class='spline-bottom'>
-        <view class='pois-item-name'>地址名称</view>
-        <view class='theme-font-gray'>详细地址</view>
+        <view class='pois-item-name'>{{item.title}}</view>
+        <view class='theme-font-gray'>{{item.address}}</view>
       </view>
     </view>
-  </view>
-  <view class='sug-list' hidden='!(searchResults.length>0)'>
-    <view>
+  </scroll-view>
+  <scroll-view scroll-y class='sug-list' hidden='{{!(searchResults.length>0)}}'>
+    <view class='sug-item-wrap' wx:for="{{searchResults}}" wx:key="{{item.id}}"  data-location="{{item.location}}">
       <view class='spline-bottom'>
-        <view class="pois-item-name">地址名称</view>
-        <view class="theme-font-gray">详细地址</view>
+        <view class="pois-item-name">{{item.title}}</view>
+        <view class="theme-font-gray">{{item.address}}</view>
       </view>
     </view>
-  </view>
+  </scroll-view>
 </view>

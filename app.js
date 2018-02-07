@@ -15,11 +15,12 @@ App({
         })
       // 添加到全局数据中
       this.globalData.userinfo = userinfo
-      // 临时代码，方便开发
+      // 临时跳转代码，方便开发
       wx.redirectTo({
         url: 'packageA/pages/select-site/select-site'
       })
     } else {
+      // 临时跳转代码，方便开发
       wx.redirectTo({
         url: 'packageA/pages/select-site/select-site'
       })

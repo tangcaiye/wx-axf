@@ -2,10 +2,14 @@ var QQMapWX = require('../../../utils/qqmap-wx-jssdk.js')
 
 let app = getApp()
 let api = require('../../../utils/api.js')
+let util = require('../../../utils/util.js')
 // 城市列表
 let citys = []
-// 地图的关键字
-let key = ''
+// 所选的城市
+let selectedCity = ''
+// 所选的地址
+let selectedSite = ''
+// 腾讯地图sdk
 let qqmapsdk
 Page({
   data: {
@@ -14,33 +18,94 @@ Page({
     latitude: '',
     // 经度
     longitude: '',
-    // 搜索的结果
-    rgcData: {}
+    // 通过所选地址搜索的结果
+    rgcData: [],
+    // 通过文本输入框内容搜索的结果
+    searchResults: []
   },
   onLoad: function () {
     // 实例化API核心类
     qqmapsdk = new QQMapWX({
       key: 'JQFBZ-Y7Q34-EWXU4-XUFDK-RGPPJ-OHFNE'
     })
-    let selectedCity = app.globalData.selectedCity
-    let selectedSite = app.globalData.selectedSite
+    selectedCity = app.globalData.selectedCity
+    selectedSite = app.globalData.selectedSite
     // 首先判断是否选择了地址
     if (selectedSite === '') {
       // 没有地址,就用该城市对应的默认地址
       // 读取城市列表
+      this.getCitys()
+        .then(() => {
+          this.initSiteList()
+        })
+    }
+  },
+  onShow () {
+    if (selectedSite !== '') {
+      this.initSiteList()
+    } 
+  },
+  /* 
+   * 地址输入框键入内容的处理
+   * util.debounce限制触发的频率(防抖)
+   */
+  searchSite: util.debounce(700, function (event) {
+    let val = event.detail.value
+    this.getSug(val)
+      .then(res => {
+        console.log(res)
+        this.setData({
+          searchResults: res.data
+        })
+      }) 
+  }),
+  /* 
+   * 初始化根据所选的关键字显示地址列表
+   */
+  initSiteList () {
+    this.getSug(selectedSite)
+      .then(res => {
+        this.setData({
+          rgcData: res.data
+        })
+      })
+  },
+  /* 
+   * 调用关键字获取位置列表的接口
+   */
+  getSug (keyword) {
+    return new Promise((resolve, reject) => {
+      // 调用接口
+      qqmapsdk.getSuggestion({
+        keyword: keyword,
+        region: selectedCity,
+        success: function (res) {
+          resolve(res)
+        },
+        fail: function (res) {
+          reject(res)
+        }
+      })
+    })
+  },
+  /* 
+   * 获取城市列表
+   */
+  getCitys () {
+    return new Promise((resolve, reject) => {
       app.fetch(api.host + '/citys')
         .then(res => {
           citys = res
           for (let i = 0; i < citys.length; i++) {
             if (citys[i].city === selectedCity) {
-              let key = citys[i].name
+              selectedSite = citys[i].name
               let latitude = citys[i].y
               let longitude = citys[i].x
               let markers = [{
                 id: '1',
                 latitude: latitude,
                 longitude: longitude,
-                title: key,
+                title: selectedSite,
                 iconPath: '/images/marker_red.png'
               }]
               this.setData({
@@ -48,26 +113,12 @@ Page({
                 latitude: latitude,
                 longitude: longitude
               })
+              
               break
             }
           }
+          resolve()
         })
-    }
-  },
-  onShow () {
-    // 调用接口
-    qqmapsdk.getSuggestion({
-      keyword: '灵芝',
-      region: '深圳市',
-      success: function (res) {
-        console.log(res);
-      },
-      fail: function (res) {
-        console.log(res);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
     })
   }
 })
