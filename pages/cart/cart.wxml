@@ -44,7 +44,7 @@ module.exports = {
           收<text class="text-hidden">a</text>货<text class="text-hidden">a</text>人
         </view>
         <view class='td'>
-          {{userinfo.selectSite.linkman}} {{userinfo.selectSite.sex?'先生':'女士'}}
+          {{userinfo.selectSite.linkman}} {{userinfo.selectSite.sex?'女士':'先生'}}
         </view>
       </view>
       <view class='tr'>
