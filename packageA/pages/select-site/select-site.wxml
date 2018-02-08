@@ -4,7 +4,7 @@
   <!--地图容器-->
   <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="17" show-location="true" markers="{{markers}}"></map>
   <scroll-view scroll-y class='pois-list'>
-    <view class='pois-item-wrap' wx:for="{{rgcData}}" wx:key="{{item.id}}" data-location="{{item.location}}">
+    <view class='pois-item-wrap' wx:for="{{rgcData}}" wx:key="{{item.id}}" data-item="{{item}}" bindtap='addSite'>
       <view class='spline-bottom'>
         <view class='pois-item-name'>{{item.title}}</view>
         <view class='theme-font-gray'>{{item.address}}</view>

@@ -28,22 +28,26 @@ Page({
     qqmapsdk = new QQMapWX({
       key: 'JQFBZ-Y7Q34-EWXU4-XUFDK-RGPPJ-OHFNE'
     })
-    selectedCity = app.globalData.selectedCity
-    selectedSite = app.globalData.selectedSite
-    // 首先判断是否选择了地址
-    if (selectedSite === '') {
-      // 没有地址,就用该城市对应的默认地址
-      // 读取城市列表
-      this.getCitys()
-        .then(() => {
-          this.initSiteList()
-        })
-    }
+    selectedCity = app.globalData.selectedSite.city
+    selectedSite = app.globalData.selectedSite.site
   },
   onShow () {
-    if (selectedSite !== '') {
-      this.initSiteList()
-    } 
+    app.globalData.selectSiteBol = true
+    // 读取城市列表
+    this.getCitys()
+      .then(() => {
+        this.initSiteList()
+      })
+  },
+  /* 
+   * 切换选择的地址
+   * @param object item 地址对象
+   */
+  addSite (event) {
+    let item = event.currentTarget.dataset.item
+    // 更改全局属性
+
+
   },
   /* 
    * 地址输入框键入内容的处理

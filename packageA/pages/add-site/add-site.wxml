@@ -5,20 +5,20 @@
         <view class='tr spline-top'>
           <view class='th'>联系人</view>
           <view class='td'>
-            <input type="text" class="addr-input" placeholder="收货人姓名"></input>
+            <input type="text" class="addr-input" placeholder="收货人姓名" value="{{linkman}}" bindinput='changeLinkman'></input>
           </view>
         </view>
         <view class='tr spline-top'>
           <view class='th'><text decode>&nbsp;</text></view>
           <view class='td site-center'>
-            <text class='theme-radio'>先生</text>
-            <text class='theme-radio'>女士</text>
+            <text class='{{sex?"theme-radio":"theme-radio checked"}}' data-sex="0" bindtap="changeSex">先生</text>
+            <text class='{{sex?"theme-radio checked":"theme-radio"}}' data-sex="1" bindtap='changeSex'>女士</text>
           </view>
         </view>
         <view class='tr spline-top'>
           <view class='th'>手机号码</view>
           <view class='td'>
-            <input type="text" placeholder="鲜蜂侠联系您的电话"></input>
+            <input type="text" placeholder="鲜蜂侠联系您的电话" value='{{phone}}' bindinput='changePhone'></input>
           </view>
         </view>
         <view class='tr spline-top'>
@@ -35,13 +35,13 @@
         <view class='tr spline-top'>
           <view class='th'>所在地区</view>
           <view class='td more'>
-            <input type="text" placeholder="请选择您的住宅小区、大厦或学校" bindtap='selectSite'></input>
+            <input type="text" placeholder="请选择您的住宅小区、大厦或学校" bindtap='selectSite' value="{{selectedSite}}"></input>
           </view>
         </view>
         <view class='tr spline-top'>
           <view class='th'>详细地址</view>
           <view class='td'>
-            <input type="text" placeholder="请输入楼号门牌号等详细信息"></input>
+            <input type="text" placeholder="请输入楼号门牌号等详细信息" value='{{detailSite}}' bindinput='changeDetailSite'></input>
           </view>
         </view>
       </view>

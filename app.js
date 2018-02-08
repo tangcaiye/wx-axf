@@ -257,10 +257,23 @@ App({
     carts: [],
     // 用户信息
     userinfo: {},
-    // 所选城市
-    selectedCity: '深圳市',
-    // 所选地址
-    selectedSite: ''
+    // 所选地址对象，初始为北京市
+    selectedSite: {
+      city: '北京市',
+      site: '天安门',
+      longitude: 116.397390,
+      latitude: 39.908860,
+      // 联系人
+      linkman: '',
+      // 性别
+      sex: 0,
+      // 手机号
+      phone: '',
+      // 详细地址
+      detailSite: ''
+    },
+    // 通过这个属性来判断是不是从select-site页面进入的add-site页
+    selectSiteBol: false
   },
   /* 
    * 封装的请求方法
