@@ -43,3 +43,7 @@
   height: 100%;
   line-height: 100%;
 }
+.selected-site{
+  display: block;
+  line-height: 80rpx;
+}

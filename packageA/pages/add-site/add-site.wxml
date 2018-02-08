@@ -35,7 +35,7 @@
         <view class='tr spline-top'>
           <view class='th'>所在地区</view>
           <view class='td more'>
-            <input type="text" placeholder="请选择您的住宅小区、大厦或学校" bindtap='selectSite' value="{{selectedSite}}"></input>
+            <text class='selected-site' bindtap='selectSite'>{{selectedSite}}</text>
           </view>
         </view>
         <view class='tr spline-top'>
@@ -46,5 +46,6 @@
         </view>
       </view>
     </view>
+    <button>保存地址</button>
   </view>
 </view>

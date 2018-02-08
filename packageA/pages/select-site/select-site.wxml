@@ -12,7 +12,7 @@
     </view>
   </scroll-view>
   <scroll-view scroll-y class='sug-list' hidden='{{!(searchResults.length>0)}}'>
-    <view class='sug-item-wrap' wx:for="{{searchResults}}" wx:key="{{item.id}}"  data-location="{{item.location}}">
+    <view class='sug-item-wrap' wx:for="{{searchResults}}" wx:key="{{item.id}}" data-item="{{item}}" bindtap='addSite'>
       <view class='spline-bottom'>
         <view class="pois-item-name">{{item.title}}</view>
         <view class="theme-font-gray">{{item.address}}</view>

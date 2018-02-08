@@ -1,6 +1,9 @@
 let app = getApp()
 let api = require('../../../utils/api.js')
 
+// 数据库中原始的地址信息
+let dbCitys = []
+
 Page({
 
   /**
@@ -23,6 +26,7 @@ Page({
     // 获取支持的城市列表
     app.fetch(api.host + '/citys')
       .then(res => {
+        dbCitys = res
         let citys = []
         for (let i = 0; i < res.length; i++) {
           citys.push(res[i].city)
@@ -54,9 +58,9 @@ Page({
         detailSite: ''
       }
     }
+
+    // 获取selectedSite的内容并设置到data中
     let selectedSite = app.globalData.selectedSite
-    
-    // 设置
     this.setData({
       selectedCityIndex: this.data.citys.indexOf(selectedSite.city),
       // 所选地址
@@ -72,9 +76,18 @@ Page({
    */
   changeSelectedCityIndex (event) {
     let index = event.detail.value
-    app.selectedCity = this.data.citys[index]
+    // 构建新的城市地区坐标
+    let newSite = {
+      city: dbCitys[index].city,
+      site: dbCitys[index].name,
+      longitude: dbCitys[index].x,
+      latitude: dbCitys[index].y
+    }
+    // 跟原本的合并并赋值
+    app.globalData.selectedSite = Object.assign( app.globalData.selectedSite, newSite)
     this.setData({
-      selectedCityIndex: index
+      selectedCityIndex: index,
+      selectedSite: dbCitys[index].name
     })
   },
   /* 
