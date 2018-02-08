@@ -37,14 +37,14 @@ module.exports = {
   <scroll-view scroll-y class='main' hidden='{{!(carts.length>0)}}'>
     <!--地址信息  -->
     <view class='table receive'>
-      <view class='more extend-click'>修改</view>
+      <navigator url='/packageA/pages/site/site' class='more extend-click'>修改</navigator>
       <view class='tr'>
         <view class='th'>
           <!-- 两个英文字符等于一个中文字的宽度 -->
           收<text class="text-hidden">a</text>货<text class="text-hidden">a</text>人
         </view>
         <view class='td'>
-          tangcaiye 先生
+          {{userinfo.selectSite.linkman}} {{userinfo.selectSite.sex?'先生':'女士'}}
         </view>
       </view>
       <view class='tr'>
@@ -52,12 +52,12 @@ module.exports = {
           电<text class="text-hidden">中</text><text class="text-hidden">中</text>话
         </view>
         <view class='td'>
-          tangcaiye 先生
+          {{userinfo.selectSite.phone}}
         </view>
       </view>
       <view class='tr'>
         <view class='th'>收货地址</view>
-        <view class='td'>飞电风扇的</view>
+        <view class='td'>{{userinfo.selectSite.city}}{{userinfo.selectSite.site}}{{userinfo.selectSite.detailSite}}</view>
       </view>
     </view>
     <!--收货时间等信息  -->

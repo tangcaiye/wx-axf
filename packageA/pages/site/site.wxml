@@ -1,16 +1,16 @@
 <view class="site">
   <view class='main'>
     <!--没有地址的时候  -->
-    <view class='empty-notice'>
+    <view class='empty-notice' hidden='{{sites.length>0}}'>
       <view class='notice-icon'></view>
       <view>您还没地址哦~</view>
     </view>
     <!--显示地址列表  -->
     <view class='addr-list block'>
-      <view class='addr-item spline-bottom' wx:for="{{sites}}" wx:key="{{item.id}}">
-        <view class='addr-desc'>
+      <view class='addr-item spline-bottom' wx:for="{{sites}}" wx:key="{{item.id}}" data-item="{{item}}" bindtap="changeSelectedSite">
+        <view class='{{userinfo.selectSite.id===item.id?"addr-desc selected": "addr-desc"}}'>
           <view class='no-wrap'><text decode>{{item.linkman}}&nbsp;&nbsp;&nbsp;{{item.phone}}</text></view>
-          <view class='no-wrap theme-font-gray'><text decode>{{item.city}}&nbsp;{{item.site}}</text></view>
+          <view class='no-wrap theme-font-gray'><text decode>{{item.city}}&nbsp;{{item.site}}{{item.detailSite}}</text></view>
         </view>
         <view class='addr-edit'></view>
       </view>

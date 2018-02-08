@@ -111,6 +111,45 @@ Page({
     })
   },
   /* 
+   * 保存地址
+   */
+  saveSite () {
+    let data = this.data
+    if (data.linkman !== '' && data.detailSite !== '' && data.sex !== '' && data.phone !== '') {
+      let userinfo = app.globalData.userinfo
+      let selectedSite = app.globalData.selectedSite
+      // 构建地址对象
+      let siteObj = {
+        userId: userinfo.id,
+        linkman: data.linkman,
+        sex: data.sex,
+        phone: data.phone,
+        city: selectedSite.city,
+        site: selectedSite.site,
+        detailSite: data.detailSite,
+        longitude: selectedSite.longitude,
+        latitude: selectedSite.latitude
+      }
+      app.fetch(api.host + '/sites', 'POST', siteObj)
+        .then(res => {
+          // 添加到全局的地址列表中
+          app.globalData.sites.push(res)
+          wx.showModal({
+            title: '提示',
+            content: '添加地址成功',
+            showCancel: false,
+            success () {
+              wx.navigateBack()
+            }
+          })
+        })
+    } else {
+      wx.showToast({
+        title: '请完善地址信息,不能为空',
+      })
+    }
+  },
+  /* 
    * 添加对input对data数据的更新
    */
   changeLinkman (event) {

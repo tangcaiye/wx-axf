@@ -8,13 +8,14 @@ App({
     if (userinfo) {
       // 如果userinfo不等于空,那么就提取里面的值
       userinfo = JSON.parse(userinfo)
-      // 获取改用户的购物车数据
+      // 获取该用户的购物车数据
       this.getCart(userinfo.id)
         .then(res=>{
           this.globalData.carts = res
         })
       // 添加到全局数据中
       this.globalData.userinfo = userinfo
+      console.log(userinfo)
       // 临时跳转代码，方便开发
       /* wx.redirectTo({
         url: 'packageA/pages/select-site/select-site'
@@ -257,6 +258,8 @@ App({
     carts: [],
     // 用户信息
     userinfo: {},
+    // 地址列表
+    sites: [],
     // 所选地址对象，初始为北京市
     selectedSite: {
       city: '北京市',

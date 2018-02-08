@@ -76,7 +76,7 @@ Page({
               // 手机号
               phone: phone,
               // 初始化所选地址
-              select_site: {}
+              selectSite: {}
             }
             
             // 发送注册请求

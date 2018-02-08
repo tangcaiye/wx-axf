@@ -46,6 +46,6 @@
         </view>
       </view>
     </view>
-    <button>保存地址</button>
+    <button bindtap='saveSite'>保存地址</button>
   </view>
 </view>

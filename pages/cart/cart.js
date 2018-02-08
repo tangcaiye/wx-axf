@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     // 判断是否有选择地址,如果没有的话,跳转选择地址
     let userinfo = app.globalData.userinfo
-    if (userinfo.select_site.id) {
+    if (userinfo.selectSite.id) {
       // 有地址的情况
       this.setData({
         userinfo: userinfo
@@ -67,8 +67,8 @@ Page({
         title: '提示',
         content: '没有选择地址',
         mask: true,
-        // 不管点的确定还是取消都要跳转到地址列表页
-        complete () {
+        showCancel: false,
+        success () {
           wx.navigateTo({
             url: '/packageA/pages/site/site',
           })
